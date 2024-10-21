@@ -1,0 +1,93 @@
+[
+  {
+    "palavrasChave": "resumo apresentação curriculo currículo",
+    "titulo": "Meu Currículo",
+    "tipoLink": "link",
+    "link": "index.html#banner",
+    "icone": "icon solid fa-file"
+  },
+  {
+    "palavrasChave": "formação faculdade especialização",
+    "titulo": "Minha formação",
+    "tipoLink": "link",
+    "link": "index.html#formacao",
+    "icone": "icon solid fa-graduation-cap"
+  },
+  {
+    "palavrasChave": "skills conhecimento",
+    "titulo": "Minhas skills",
+    "tipoLink": "link",
+    "link": "index.html#skills",
+    "icone": "icon solid fa-chart-bar"
+  },
+  {
+    "palavrasChave": "carreira trajetória",
+    "titulo": "Minha carreira",
+    "tipoLink": "link",
+    "link": "index.html#carreira",
+    "icone": "icon solid fa-map-signs"
+  },
+  {
+    "palavrasChave": "certificados cursos extensão qualificação",
+    "titulo": "Meus certificados",
+    "tipoLink": "link",
+    "link": "index.html#certificados",
+    "icone": "icon solid fa-scroll"
+  },
+  {
+    "palavrasChave": "relatos recomendações comentários",
+    "titulo": "Recomendações de colegas",
+    "tipoLink": "link",
+    "link": "index.html#recomendacoes",
+    "icone": "icon solid fa-comment-dots"
+  },
+  {
+    "palavrasChave": "sobre mim fábio eduardo dos santos fabio eduardo dos santos",
+    "titulo": "Sobre mim",
+    "tipoLink": "link",
+    "link": "sobreMim.html",
+    "icone": "icon solid fa-portrait"
+  },
+  {
+    "palavrasChave": "carreira dev",
+    "titulo": "Sobre minha carreira dev",
+    "tipoLink": "link",
+    "link": "sobreMim.html#carreiraDev",
+    "icone": "icon solid fa-code"
+  },
+  {
+    "palavrasChave": "carreira academica acadêmica professor",
+    "titulo": "Sobre minha carreira acadêmica",
+    "tipoLink": "link",
+    "link": "sobreMim.html#carreiraAcademica",
+    "icone": "icon solid fa-chalkboard-teacher"
+  },
+  {
+    "palavrasChave": "carreira como gestor",
+    "titulo": "Sobre minha carreira como gestor",
+    "tipoLink": "link",
+    "link": "sobreMim.html#carreiraGestor",
+    "icone": "icon solid fa-people-carry"
+  },
+  {
+    "palavrasChave": "contato celular whatsapp localização cidade estado",
+    "titulo": "<strong>Fábio Santos</strong><br/><i class=\"icon solid fa-envelope\"></i> <a href=\"mailto:fabioedusantos@gmail.com\">fabioedusantos@gmail.com</a><br/><i class=\"icon brands fa-whatsapp\"></i> <a href=\"https://wa.me/5514996592218\" target=\"_blank\">(14) 99659-2218</a><br/><i class=\"icon brands fa-twitter\"></i> <a href=\"https://twitter.com/fabioedusantos\" target=\"_blank\">Twitter@fabioedusantos</a><br/><i class=\"icon brands fa-linkedin-in\"></i> <a href=\"https://www.linkedin.com/in/fabioedusantos/\" target=\"_blank\">Linkedin@fabioedusantos</a><br/><i class=\"icon brands fa-github\"></i> <a href=\"https://github.com/fabioedusantos\" target=\"_blank\">GitHub@fabioedusantos</a><br/><i class=\"icon solid fa-blog\"></i> <a href=\"https://blog.fabiao.tech/\" target=\"_blank\">Blog</a><br/><i class=\"icon solid fa-home\"></i> <a href=\"https://maps.app.goo.gl/jC6svJf6b7qPWxc97\" target=\"_blank\">Bauru - SP</a>",
+    "tipoLink": "information",
+    "link": "",
+    "icone": ""
+  },
+  {
+    "palavrasChave": "currículo curriculum curriculo",
+    "titulo": "Baixe meu currículo",
+    "tipoLink": "link_blank",
+    "link": "assets/data/curriculo-fabio-eduardo-dos-santos.pdf",
+    "icone": "icon solid fa-file-pdf"
+  },
+  {
+    "palavrasChave": "carta de apresentação currículo curriculum curriculo",
+    "titulo": "Baixe minha carta de apresentação",
+    "tipoLink": "link_blank",
+    "link": "assets/data/carta-apresentacao-fabio-eduardo-dos-santos.pdf",
+    "icone": "icon solid fa-envelope-open-text"
+  }
+]
