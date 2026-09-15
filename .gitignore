@@ -1,0 +1,43 @@
+# Environment files
+.env
+**/.env
+.env.*
+**/.env.*
+!**/.env.example
+
+# Backend runtime/dependencies
+backend/app/vendor/
+
+# Node dependencies/builds
+**/node_modules/
+**/.nuxt/
+**/.output/
+**/dist/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Backups and secrets
+backups/
+**/backups/
+*.sql.gz
+*.dump
+*.bak
+db.sql
+fbsantos-db*.sql
+*.pem
+*.key
+*.p12
+*.pfx
+**/auth.json
+**/service-account*.json
+**/*credentials*.json
+fbsantos-media*.tar.gz
+
+# Dados persistentes locais de cada ambiente (nunca versionar uploads/DB)
+backend/docker/dev/data/
+backend/docker/production/data/
+backend/docker/production/backups/
