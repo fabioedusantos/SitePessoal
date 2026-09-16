@@ -1,0 +1,23 @@
+{
+  "name": "fbsantos/backend",
+  "description": "API do FBSantos.com.br",
+  "type": "project",
+  "require": {
+    "php": "^8.5",
+    "ext-pdo": "*",
+    "slim/slim": "^4.14",
+    "slim/psr7": "^1.7",
+    "php-di/php-di": "^7.0",
+    "firebase/php-jwt": "^7.2",
+    "vlucas/phpdotenv": "^5.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "scripts": {
+    "serve": "php -S 0.0.0.0:8080 -t public"
+  },
+  "license": "proprietary"
+}
