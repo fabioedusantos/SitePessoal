@@ -1,0 +1,11 @@
+app/vendor/
+database/
+docker/dev/
+**/.env
+.git/
+.idea/
+.vscode/
+
+docker/production/data/
+docker/dev/data/
+docker/production/backups/

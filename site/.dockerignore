@@ -1,0 +1,8 @@
+app/node_modules/
+app/.nuxt/
+app/.output/
+docker/dev/
+**/.env
+.git/
+.idea/
+.vscode/
