@@ -1,0 +1,34 @@
+# Integração entre os módulos de produção.
+# O Docker Compose carrega este arquivo automaticamente junto ao compose.yaml.
+# Não duplicar as configurações internas de backend, site ou panel aqui.
+services:
+  backend-nginx:
+    networks:
+      api_private:
+        aliases:
+          - fbsantos-api
+
+  site-app:
+    depends_on:
+      backend-nginx:
+        condition: service_healthy
+    networks:
+      api_private:
+
+  site-nginx:
+    networks:
+      api_private:
+
+  panel-nginx:
+    depends_on:
+      backend-nginx:
+        condition: service_healthy
+    networks:
+      api_private:
+
+networks:
+  # Somente os serviços HTTP que precisam da API participam desta rede.
+  # PHP-FPM, banco e os Cloudflare Tunnels NÃO participam.
+  api_private:
+    name: fbsantos-api-private
+    internal: true

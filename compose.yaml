@@ -1,0 +1,11 @@
+# Ponto único de entrada de produção. Cada módulo mantém seu Docker Compose.
+# Docker Compose >= 2.20.3 (suporte a include).
+name: fbsantos-production
+
+include:
+  - ./backend/docker/production/docker-compose.yml
+  - ./site/docker/production/docker-compose.yml
+  - ./panel/docker/production/docker-compose.yml
+
+# As dependências ENTRE módulos e a rede compartilhada da API ficam no
+# compose.override.yaml, carregado automaticamente pelo Docker Compose.

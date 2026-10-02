@@ -1,0 +1,92 @@
+# Infraestrutura do backend de PRODUÇÃO, importada pelo compose.yaml da raiz.
+# Os caminhos relativos são resolvidos a partir deste diretório via include.
+# Dados persistentes visíveis em backend/docker/production/data/.
+# Não exclua data/ durante atualizações!
+services:
+  backend-db:
+    image: mariadb:11.4
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./data/db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks:
+      - db_private
+
+  backend-migrate:
+    build:
+      context: ../..
+      dockerfile: docker/production/Dockerfile
+    restart: "no"
+    env_file: .env
+    environment:
+      DB_HOST: backend-db
+      DB_PORT: "3306"
+      MIGRATIONS_PATH: /var/www/database/migrations
+    depends_on:
+      backend-db:
+        condition: service_healthy
+    volumes:
+      - ../../database:/var/www/database:ro
+    command: php bin/migrate.php
+    networks:
+      - db_private
+
+  backend-app:
+    build:
+      context: ../..
+      dockerfile: docker/production/Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DB_HOST: backend-db
+      DB_PORT: "3306"
+      GA_CACHE_PATH: /var/www/cache/ga4-dashboard.json
+    depends_on:
+      backend-db:
+        condition: service_healthy
+      backend-migrate:
+        condition: service_completed_successfully
+    volumes:
+      - ./data/uploads:/var/www/html/public/uploads
+      - ./data/cache:/var/www/cache
+    command: >-
+      sh -lc 'mkdir -p /var/www/html/public/uploads /var/www/cache && chown -R www-data:www-data /var/www/html/public/uploads /var/www/cache && exec php-fpm'
+    networks:
+      - backend_runtime
+      - db_private
+      - backend_egress
+
+  backend-nginx:
+    image: nginx:1.30.5-alpine
+    restart: unless-stopped
+    depends_on:
+      backend-app:
+        condition: service_started
+    volumes:
+      - ../../app/public:/var/www/html/public:ro
+      - ./data/uploads:/var/www/html/public/uploads:ro
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://fbsantos-api/health || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    networks:
+      - backend_runtime
+      # api_private e o alias fbsantos-api são adicionados pelo Compose raiz.
+
+networks:
+  backend_runtime:
+    name: fbsantos-backend-runtime
+    internal: true
+  db_private:
+    name: fbsantos-db-private
+    internal: true
+  backend_egress:
+    name: fbsantos-backend-egress

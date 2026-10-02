@@ -1,0 +1,35 @@
+# Painel administrativo (Vue + nginx + Cloudflare Tunnel).
+# A rede da API e a dependência da saúde do backend vêm do Compose raiz.
+services:
+  panel-nginx:
+    build:
+      context: ../..
+      dockerfile: docker/production/Dockerfile
+      args:
+        VITE_API_BASE: /api/v1
+        VITE_SITE_URL: https://fbsantos.com.br
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1/index.html || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks:
+      panel_net:
+        aliases:
+          - nginx
+
+  panel-cloudflared:
+    image: cloudflare/cloudflared:2026.10.0
+    restart: unless-stopped
+    env_file: .env
+    depends_on:
+      panel-nginx:
+        condition: service_healthy
+    command: tunnel --no-autoupdate run
+    networks:
+      - panel_net
+
+networks:
+  panel_net:
+    name: fbsantos-panel
