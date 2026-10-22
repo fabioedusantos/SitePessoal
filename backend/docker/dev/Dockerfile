@@ -1,4 +1,4 @@
-FROM php:8.5-fpm-alpine
+FROM php:8.5.12-fpm-alpine
 
 RUN apk add --no-cache oniguruma git unzip ca-certificates libpng libjpeg-turbo libwebp freetype \
     && update-ca-certificates \
